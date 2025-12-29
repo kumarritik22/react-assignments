@@ -22,6 +22,12 @@ function App() {
     setDescription ('')
   }
 
+const deleteHandler = (idx)=> {
+  const copyUsers = [...allUsers]
+  copyUsers.splice(idx,1)
+  setAllUsers(copyUsers);
+}
+
   return (
     <div className='bg-slate-900 p-5 min-h-screen'>
         <div className="flex flex-col items-center gap-6 text-white bg-[]">
@@ -77,7 +83,7 @@ function App() {
                 }}  
               />
 
-            <button className="mt-4 self-center bg-sky-500 hover:bg-sky-600 text-white rounded-lg shadow-lg transition-all duration-200 px-4 py-1 border border-[#334155] font-medium">Submit</button>
+            <button className="mt-4 self-center bg-sky-500 hover:bg-sky-600 text-white rounded-lg shadow-lg transition-all duration-200 px-4 py-1 border border-[#334155] font-medium cursor-pointer active:scale-95">Submit</button>
           </form>
         </div>
 
@@ -90,6 +96,9 @@ function App() {
                 <h3 className='mt-0.75 text-[15px] font-semibold '>{elem.occupation}</h3>
                 <h4 className='mt-0.75 text-[12px] font-semibold '>{elem.email}</h4>
                 <p className='mt-2.5 text-[10px]'>{elem.description}</p>
+                <button className=' mt-4 px-4 py-2 bg-red-700 font-medium rounded-lg text-sm text-[#ffffffe8] cursor-pointer active:scale-95' onClick={() => {
+                  deleteHandler(idx)
+                }}>Remove</button>
             </div>
         })}
       </div>
