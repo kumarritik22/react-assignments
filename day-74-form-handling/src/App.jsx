@@ -7,13 +7,22 @@ function App() {
   const [occupation, setOccupation] = useState('')
   const [email, setEmail] = useState('')
   const [description, setDescription] = useState('')
+
+  const localStg = JSON.parse(localStorage.getItem("allUsers")) || []
   
-  const [allUsers, setAllUsers] = useState([])
+  const [allUsers, setAllUsers] = useState(localStg)
+
+
 
   const submitHandler = (e) => {
     e.preventDefault()
 
-    setAllUsers([...allUsers, { profilePic, name, occupation, email, description }])
+    const oldData = [...allUsers];
+
+    oldData.push({ profilePic, name, occupation, email, description })
+
+    setAllUsers(oldData)
+    localStorage.setItem("allUsers", JSON.stringify(oldData))
 
     setProfilePic ('')
     setName ('')
@@ -26,6 +35,8 @@ const deleteHandler = (idx)=> {
   const copyUsers = [...allUsers]
   copyUsers.splice(idx,1)
   setAllUsers(copyUsers);
+
+  localStorage.setItem("allUsers", JSON.stringify(copyUsers))
 }
 
   return (
