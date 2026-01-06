@@ -1,0 +1,60 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Gallery from "./components/Gallery";
+
+const App = () => {
+
+  const [userData, setUserData] = useState([]);
+
+  const [index, setIndex] = useState(1)
+
+  const getData = async () => {
+    const response = await axios.get(`https://picsum.photos/v2/list?page=${index}&limit=12`)
+    setUserData(response.data)
+  }
+
+  useEffect(function(){
+    getData()
+  }, [index])
+
+  let printUserData = <h3 className="text-gray-300 absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 font-bold">Loading...</h3>
+
+  if(userData.length > 0) {
+    printUserData = userData.map(function(elem, idx){
+      return <div key={idx}>
+                <Gallery elem={elem} />
+              </div>
+    })
+  }
+
+  return (
+    <div className='bg-black h-screen text-white p-4 overflow-auto'>
+      <div className="h-[90%] flex flex-wrap gap-4 p-2 items-center justify-center">{printUserData}</div>
+      <div className="flex items-center justify-center gap-6 mt-4">
+        <button 
+        style={{opacity: index === 1 ? 0.5 : 1}}
+        className="bg-amber-400 text-sm cursor-pointer active:scale-95 text-black rounded px-4 py-2 font-semibold" 
+        onClick={()=> {
+          if(index > 1) {
+            setIndex(index-1)
+            setUserData([])
+          }
+        }}
+        >Prev
+        </button>
+
+        <h4>Page {index}</h4>
+
+        <button 
+        className="bg-amber-400 text-sm cursor-pointer active:scale-95 text-black rounded px-4 py-2 font-semibold" 
+        onClick={()=> {
+          setIndex(index+1)
+          setUserData([])
+        }}>Next
+        </button>
+      </div>
+    </div>
+  )
+}
+
+export default App
