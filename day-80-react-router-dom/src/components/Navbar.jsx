@@ -23,6 +23,14 @@ const Navbar = () => {
               >Products
             </NavLink>
 
+            <NavLink 
+              to='/services' 
+              style={({isActive}) => ({
+                color: isActive? "red" : "white"
+              })}
+              >Services
+            </NavLink>
+
             <NavLink
               to='/about'
               style={({isActive}) => ({
