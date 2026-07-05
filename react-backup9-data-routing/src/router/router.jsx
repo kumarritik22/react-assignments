@@ -8,6 +8,7 @@ import MainLayout from "../layout/MainLayout";
 import AuthLayout from "../layout/AuthLayout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Error from "../pages/Error";
 
 export const Router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ export const Router = createBrowserRouter([
             {
                 path: "/courses",
                 element: <Courses />
+            },
+            {
+                path: "*",
+                element: <Error />
             },
             {
                 path: "auth",
