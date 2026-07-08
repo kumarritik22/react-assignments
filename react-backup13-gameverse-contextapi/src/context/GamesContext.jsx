@@ -1,6 +1,5 @@
 import React, { createContext } from 'react'
 
-
 export const GamesDataContext = createContext()
 
 const GamesContext = ({children}) => {
