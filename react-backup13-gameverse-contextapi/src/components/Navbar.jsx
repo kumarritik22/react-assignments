@@ -1,8 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { CircleUserRound, Gamepad, Search } from 'lucide-react';
-import { NavLink } from 'react-router';
+import { NavLink, useSearchParams } from 'react-router';
 
 const Navbar = () => {
+
+  const [value, setValue] = useState("")
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  useEffect(() => {
+    
+    const timer = setTimeout(() => {
+      setSearchParams(prev => {
+        const params = new URLSearchParams(prev)
+
+        if(value) {
+          params.set("search", value)
+        } else {
+          params.delete("search")
+        }
+
+        params.set("page", 1)
+        return params
+      })
+    }, 500);
+
+    return () => clearTimeout(timer);
+
+  }, [value])
+  
+
+
   return (
     <div className='w-full flex items-center justify-between text-white px-8 py-3 border-b border-zinc-700'>
       <div className='flex items-center gap-3'>
@@ -35,7 +62,15 @@ const Navbar = () => {
       <div className='flex items-center gap-3'>
         <div className='bg-[#111111] flex rounded-xl px-4 w-80 gap-2 items-center py-2'>
           <Search size={12} className='text-[#95a3b8]'/>
-          <h3 className='text-sm text-[#95a3b8]'>Search games...</h3>
+          <input 
+            value={value}
+            onChange={(e) => {
+              return setValue(e.target.value)
+            }}
+            className='w-full text-sm text-[#95a3b8] outline-none' 
+            type='text' 
+            placeholder='Search games...' 
+          />
         </div>
         <CircleUserRound size={20} className='text-[#95a3b8]' />
       </div>

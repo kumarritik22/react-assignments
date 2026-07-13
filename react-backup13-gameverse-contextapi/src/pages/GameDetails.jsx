@@ -1,14 +1,16 @@
 import { Boxes, Copyright, FileText, Gamepad, Globe, Heart, Info, Languages, MonitorSmartphone, Share2, ShoppingCart, Star, Users } from 'lucide-react';
-import React from 'react'
-import { useLoaderData, useParams } from 'react-router'
+import React, { useContext } from 'react'
+import { useLoaderData, useNavigate, useParams } from 'react-router'
+import { GamesDataContext } from '../context/GamesContext';
 
 const GameDetails = () => {
 
-    const params = useParams()
-    console.log(params);
+    const {data} = useLoaderData();
 
-    const {data} = useLoaderData()
-    console.log(data);
+    const {addToFav, favourite} = useContext(GamesDataContext);
+
+    const navigate = useNavigate();
+   
 
   return (
     <div className='main min-h-screen w-full bg-black py-10 px-15 text-white'>
@@ -60,7 +62,13 @@ const GameDetails = () => {
               Buy Now
             </button>
 
-            <button className="flex items-center gap-2 bg-[#222222] py-2 px-5 text-sm rounded-xl font-semibold border-zinc-600 border cursor-pointer active:scale-95 transition-transform duration-200 ">
+            <button 
+              onClick={() => {
+                addToFav(data);
+                navigate("/favourite");
+              }} 
+              className="flex items-center gap-2 bg-[#222222] py-2 px-5 text-sm rounded-xl font-semibold border-zinc-600 border cursor-pointer active:scale-95 transition-transform duration-200"
+              >
               <Heart size={20} />
               Add to Favourites
             </button>

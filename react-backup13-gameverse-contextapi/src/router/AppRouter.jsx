@@ -10,12 +10,12 @@ export const AppRouter = createBrowserRouter([
     {
         path:"/",
         element: <MainLayout />,
-        hydrateFallbackElement: <h1>Loading...</h1>,
         children: [
             {
                 index: true,
                 element: <Home />,
-                loader: gamesLoader
+                loader: gamesLoader,
+                hydrateFallbackElement: <h1 className="text-white font-bold text-5xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Loading...</h1>
             },
             {
                 path: "favourite",
@@ -28,7 +28,8 @@ export const AppRouter = createBrowserRouter([
             {
                 path: "gameDetails/:id",
                 element: <GameDetails />,
-                loader: gameDetailsLoader
+                loader: gameDetailsLoader,
+                hydrateFallbackElement: <h1 className="text-white font-bold text-5xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Loading...</h1>
             },
         ]
     }

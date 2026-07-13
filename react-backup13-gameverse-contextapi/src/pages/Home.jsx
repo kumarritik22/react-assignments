@@ -7,7 +7,6 @@ import { useLoaderData } from 'react-router'
 const Home = () => {
 
     const {data} = useLoaderData()
-    console.log(data);
     
   return (
     <div className='text-white w-full min-h-screen p-5'>
