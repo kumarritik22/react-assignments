@@ -13,7 +13,7 @@ const App = () => {
       const response = await axios.get("https://picsum.photos/v2/list", {
         params: {
           page: page,
-          limit: 10
+          limit: 12
         }
       });
       setData(response.data);
@@ -38,7 +38,7 @@ const App = () => {
   }
   
   return (
-    <div className='p-15 flex items-center justify-center flex-col'>
+    <div className='p-15 flex items-center justify-center flex-col bg-[#111111] text-white'>
       <div className='flex items-center gap-10 flex-wrap'>
         {data.map((item) => {
           return <div key={item.id} className='card h-80 w-80 rounded-md flex items-center flex-col gap-6'>
@@ -47,7 +47,6 @@ const App = () => {
                   </div>
         })}
       </div>
-      {/* <button onClick={getData} className='bg-blue-300 py-8 px-16 rounded-md font-semibold text-4xl active:scale-95 cursor-pointer mt-15 transition-transform duration-200'>Get Data</button> */}
       <div className='mt-15 flex gap-20 items-center'>
         <button 
           onClick={() => {
