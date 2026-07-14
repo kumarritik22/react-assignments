@@ -45,13 +45,6 @@ const Navbar = () => {
             Home
           </NavLink>
           <NavLink 
-            to="/games" 
-            className={({isActive}) => {
-              return `text-base font-semibold text-[#95a3b8] ${isActive ? "text-[#1381f0]" : "text-[#95a3b8]"}`
-            }}>
-            Games
-          </NavLink>
-          <NavLink 
             to="/favourite" 
             className={({isActive}) => {
               return `text-base font-semibold text-[#95a3b8] ${isActive ? "text-[#1381f0]" : "text-[#95a3b8]"}`
