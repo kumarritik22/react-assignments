@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { CircleUserRound, Gamepad, Search } from 'lucide-react';
+import { CircleUserRound, Search } from 'lucide-react';
 import { NavLink, useSearchParams } from 'react-router';
+import { RiGamepadFill } from 'react-icons/ri';
 
 const Navbar = () => {
 
@@ -33,7 +34,7 @@ const Navbar = () => {
   return (
     <div className='w-full flex items-center justify-between text-white px-8 py-3 border-b border-zinc-700'>
       <div className='flex items-center gap-3'>
-        <Gamepad size={25} className='text-[#1381f0]' />
+        <RiGamepadFill size={25} className='text-[#1381f0]' />
         <h1 className='font-bold text-xl text-white'>GameVerse</h1>
       </div>
       <div className='flex items-center gap-5'>

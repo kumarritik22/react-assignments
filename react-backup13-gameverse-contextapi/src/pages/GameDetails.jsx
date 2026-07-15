@@ -1,7 +1,8 @@
-import { Boxes, Copyright, FileText, Gamepad, Globe, Heart, Info, Languages, MonitorSmartphone, Share2, ShoppingCart, Star, Users } from 'lucide-react';
+import { Boxes, Copyright, FileText, Gamepad, Globe, Languages, MonitorSmartphone, Share2, ShoppingCart, Users } from 'lucide-react';
 import React, { useContext } from 'react'
 import { useLoaderData, useNavigate, useParams } from 'react-router'
 import { GamesDataContext } from '../context/GamesContext';
+import { RiGamepadFill, RiHeart3Fill, RiInformationFill, RiStarFill } from 'react-icons/ri';
 
 const GameDetails = () => {
 
@@ -39,7 +40,7 @@ const GameDetails = () => {
                 EDITOR'S CHOICE
               </h6>
               <div className='rating flex items-center gap-1'>
-                    <Star size={15} className='text-amber-400' />
+                    <RiStarFill size={15} className='text-amber-300' />
                     <span className='font-bold'>{data.rating}</span>
               </div>
             </div>
@@ -69,7 +70,7 @@ const GameDetails = () => {
               }} 
               className="flex items-center gap-2 bg-[#222222] py-2 px-5 text-sm rounded-xl font-semibold border-zinc-600 border cursor-pointer active:scale-95 transition-transform duration-200"
               >
-              <Heart size={20} />
+              <RiHeart3Fill size={20} className='text-white' />
               Add to Favourites
             </button>
           </div>                       
@@ -148,7 +149,7 @@ const GameDetails = () => {
           
           <div className='system mt-8 bg-[#0f172a] rounded-2xl p-5 border border-zinc-800'>
             <div className='flex items-center gap-2 mb-3'>
-              <Info size={20} className='text-[#137fec]'/>
+              <RiInformationFill size={20} className='text-[#137fec]'/>
               <h3 className='text-[#137fec] font-bold'>System Requirements</h3>
             </div>
               <p className='text-[#95a3b8] text-sm font-medium'>Requires a 64-bit processor and operating system. Recommended RTX 30-series for Ray Tracing.</p>
@@ -161,7 +162,7 @@ const GameDetails = () => {
         <div className='top section flex gap-35 items-start mt-10'>
           <div className='brand w-[23%]'>
             <div className='logo row flex items-center gap-2 mb-5'>
-              <Gamepad size={25} className='text-[#1381f0]' />
+              <RiGamepadFill size={25} className='text-[#1381f0]' />
               <h4 className='font-bold text-lg text-white'>GameVerse</h4>
             </div>
             <p className='text-sm text-[#58667b] font-medium'>The ultimate destination for game discovery and library management. Built for gamers, by gamers.</p>

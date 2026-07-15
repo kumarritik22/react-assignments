@@ -9,6 +9,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 const Home = () => {
 
     const {data} = useLoaderData()
+    // console.log(data);
     const [searchParams, setSearchParams] = useSearchParams()
     const page = Number(searchParams.get("page")) || 1;
 

@@ -1,7 +1,7 @@
-import { Star } from 'lucide-react'
 import React from 'react'
 import cyberpunk from "../assets/cyberpunk.png"
 import { useNavigate } from 'react-router'
+import { RiStarFill } from 'react-icons/ri'
 
 const Card = ({item}) => {
 
@@ -16,7 +16,7 @@ const Card = ({item}) => {
         <div className='flex items-center justify-between mb-3 gap-3'>
           <h2 className='text-white font-bold text-lg h-10 flex items-center'>{item.name}</h2>
           <div className='flex items-center gap-1'>
-            <Star size={15} className='text-amber-400' />
+            <RiStarFill size={15} className='text-amber-300' />
             <h5 className='font-bold'>{item.rating}</h5>
           </div>
         </div>
