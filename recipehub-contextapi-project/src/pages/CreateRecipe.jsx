@@ -2,8 +2,12 @@ import React, { useContext } from 'react'
 import { useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
 import { recipeContext } from '../context/RecipeContext';
+import { useNavigate } from 'react-router';
+import { toast } from "react-toastify";
 
 const CreateRecipe = () => {
+
+    const navigate = useNavigate()
 
     const {data, setData} = useContext(recipeContext)
     const {register, handleSubmit, reset } = useForm()
@@ -12,7 +16,9 @@ const CreateRecipe = () => {
     const submitHandler = (recipe) => {
       recipe.id = nanoid()
       setData([...data, recipe]);
+      toast.success("New recipe created!");
       reset();
+      navigate("/recipes");
     }
 
   return (
@@ -39,33 +45,34 @@ const CreateRecipe = () => {
       
       <textarea 
         className='block outline-none border-b p-2'
-        {...register("description")}
+        {...register("desc")}
         placeholder='Enter description'
       >  
       </textarea>
       
       <textarea 
         className='block outline-none border-b p-2'
-        {...register("ingredients")}
+        {...register("ingr")}
         placeholder='Write ingredients separated by comma'
       >  
       </textarea>
       
       <textarea 
         className='block outline-none border-b p-2'
-        {...register("instructions")}
+        {...register("inst")}
         placeholder='Write instructions separated by comma'
       >  
       </textarea>
       
       <select
         className='block outline-none border-b p-2'
-        {...register("instructions")}
-        placeholder='Write instructions separated by comma'
+        {...register("category")}
       >
-        <option value="cat-1">Category 1</option>
-        <option value="cat-2">Category 2</option>
-        <option value="cat-3">Category 3</option>
+        <option value="breakfast">Break-fast</option>
+        <option value="brunch">Brunch</option>
+        <option value="lunch">Lunch</option>
+        <option value="Supper">Supper</option>
+        <option value="dinner">Dinner</option>
       </select>
 
       <button className='block bg-amber-600 px-5 py-2 rounded mt-5 font-semibold cursor-pointer active:scale-95 transition-transform duration-200'>Save Recipe</button>
